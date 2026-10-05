@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#142332">
+  <title>Blame Impactor · Secure document workspace</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="demo-data.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <aside class="sidebar">
+    <a class="brand" href="#overview" aria-label="Blame Impactor home"><span class="brand-mark">b<span>i</span></span><span>blame<span>impactor</span><small>DOCUMENT PROVENANCE</small></span></a>
+    <div class="workspace"><span class="workspace-icon">W</span><span>WESEE workspace<small>Offline demonstration</small></span><span class="workspace-chevron">⌄</span></div>
+    <p class="nav-label">WORKSPACE</p>
+    <nav aria-label="Main navigation">
+      <button data-view="overview" class="active"><span data-icon="grid"></span>Overview</button>
+      <button data-view="documents"><span data-icon="file"></span>Document vault<span class="nav-count">1</span></button>
+      <button data-view="recipient"><span data-icon="users"></span>Recipient desk<span class="nav-count">2</span></button>
+      <button data-view="ledger"><span data-icon="layers"></span>Evidence ledger</button>
+      <button data-view="investigate"><span data-icon="search"></span>Investigation</button>
+    </nav>
+    <div class="sidebar-bottom"><div class="network-note"><i class="status-dot"></i><span>Offline by design<small>No external dependencies</small></span></div><a href="https://github.com/Sudheer1515B/blameimpactor" target="_blank" rel="noopener"><span data-icon="code"></span>Project repository ↗</a><div class="operator"><span class="avatar">OP</span><span>Demo operator<small>SIH26237 · Prototype</small></span></div></div>
+  </aside>
+  <div class="app-shell">
+    <header class="topbar"><span class="breadcrumb">Workspace <span>/</span> <strong id="breadcrumb">Overview</strong></span><div class="topbar-actions"><a class="quiet-button" href="explanation.html">How it works ↗</a><span class="demo-pill"><i></i> Visual prototype</span><button class="quiet-button" id="presentation"><span data-icon="expand"></span><span>Present</span></button><span class="avatar small">OP</span></div></header>
+    <main id="main" tabindex="-1"></main>
+    <footer class="footer"><span><i class="status-dot"></i> Recorded backend evidence · interactive walkthrough</span><span>Test-only carrier · production acceptance pending</span></footer>
+  </div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <div id="modal" class="modal-backdrop" hidden><section class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title"><button id="modal-close" class="modal-close" aria-label="Close dialog">×</button><div id="modal-content"></div></section></div>
+</body>
+</html>

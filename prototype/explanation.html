@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Blame Impactor — Problem and solution</title>
+</head>
+<body>
+<style>
+  *{box-sizing:border-box}body{margin:0;background:#edf2f5;color:#172936;font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}main{max-width:1060px;margin:auto;padding:48px 28px}header{background:#132b39;color:#f5fafc;padding:38px;border-radius:20px}.eyebrow{font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#8de3ce}h1{font-size:clamp(30px,5vw,48px);line-height:1.15;letter-spacing:-1.5px;margin:16px 0}header p{color:#c3d5df;max-width:720px;margin:0}.tag{display:inline-block;border:1px solid #55727f;border-radius:30px;padding:5px 12px;font-size:12px;margin:22px 6px 0 0}section{margin-top:32px}h2{font-size:24px;letter-spacing:-.5px;margin:0 0 16px}.label{font-size:12px;font-weight:700;letter-spacing:1.4px;color:#427381;text-transform:uppercase;margin-bottom:8px}.panel{background:#fff;padding:26px;border:1px solid #d8e2e7;border-radius:16px}.problem{display:grid;grid-template-columns:1fr 1fr;gap:24px}.problem p{margin:0;color:#526570}.recipient-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:18px 0}.recipient{text-align:center;background:#f3f6f8;padding:14px 6px;border-radius:10px}.recipient b{display:block}.recipient small{color:#526570}.result{padding-top:14px;border-top:1px solid #d8e2e7;font-weight:600}.steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.step{background:#fff;border:1px solid #d8e2e7;border-radius:14px;padding:22px}.number{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:#dff5ee;color:#116b57;font-size:13px;font-weight:700;margin-bottom:14px}.step h3{margin:0 0 8px;font-size:17px}.step p{margin:0;color:#526570;font-size:14px}.tech{display:grid;grid-template-columns:1fr 1fr;gap:20px}.tech dl{margin:0}.tech dt{font-weight:600;font-size:14px}.tech dd{margin:4px 0 16px;color:#526570;font-size:14px}.proof{display:grid;grid-template-columns:1fr 1fr;gap:14px}.status{display:inline-block;padding:4px 10px;border-radius:20px;background:#e1f4eb;color:#246648;font-size:12px;font-weight:700;margin-bottom:10px}.pending{background:#fff1d8;color:#785d21}.proof p{margin:0;font-size:14px;color:#526570}.scope{background:#e0eaf0;border-radius:14px;padding:22px;font-size:14px;color:#425b69}.scope strong{color:#172936}.scope p{margin:8px 0 0}footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;margin-top:24px;color:#526570;font-size:12px}a{color:#226d80} @media(max-width:700px){main{padding:24px 16px}header{padding:26px}.problem,.tech,.proof{grid-template-columns:1fr}.steps{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:430px){.steps{grid-template-columns:1fr}.recipient-row{gap:6px}.panel{padding:20px}}@media print{body{background:#fff}main{padding:0}header,.panel,.step,.scope{break-inside:avoid}section{margin-top:20px}}
+</style>
+<style>.security-review{margin-top:18px;padding:18px 22px;border:1px solid #d6b567;border-radius:14px;background:#fff1d8;color:#614a1b;font-size:14px}.security-review strong{display:block;margin-bottom:5px}</style>
+<main>
+  <header>
+    <div class="eyebrow">Smart India Hackathon · SIH26237</div>
+    <h1>Same document.<br>Distinct provenance.</h1>
+    <p>An offline provenance design with executable package, signing, ledger and verifier components. Invisible, removal-resistant marking remains unvalidated.</p>
+    <span class="tag">Ministry of Defence · Indian Navy / WESEE</span><span class="tag">Software · Blockchain &amp; Cybersecurity</span>
+  <p style="margin-top:24px"><a href="index.html" style="display:inline-block;background:#d5f68b;color:#163025;border-radius:8px;padding:11px 17px;text-decoration:none;font-weight:600;font-size:14px">Open the interactive prototype →</a> <a href="README.md" style="margin-left:14px;color:#c3d5df;font-size:13px">Presentation guide</a></p></header>
+  <aside class="security-review"><strong>Validation status · revised 5 October 2026</strong>A working test-only prototype now encrypts once, delivers two recipient-approved marked copies through four networked validators and native PQ TLS, and independently verifies the copies. Public-font replacement and copy combinations still erase contour recovery while retaining readable content. No production watermark is accepted; independent deployment and cross-platform acceptance remain unfinished.</aside>
+  <section>
+    <div class="label">01 / The problem</div>
+    <div class="problem">
+      <div class="panel"><h2>Identical copies leave no trail.</h2><p>A sender encrypts one confidential document. Several authorized recipients decrypt it. If a copy leaks, its identical content does not tell us which issued copy it came from.</p><div class="recipient-row"><div class="recipient"><b>Alice</b><small>Same content</small></div><div class="recipient"><b>Bob</b><small>Same content</small></div><div class="recipient"><b>Charlie</b><small>Same content</small></div></div><div class="result">Recovered copy → uncertain origin</div></div>
+      <div class="panel"><h2>The required evidence</h2><p>Give each decryption session an invisible fingerprint. Have the recipient sign its record with their own post-quantum key. Commit that evidence to a distributed ledger that one administrator cannot rewrite.</p><div class="recipient-row"><div class="recipient"><b>Alice</b><small>Session A-01</small></div><div class="recipient"><b>Bob</b><small>Session B-01</small></div><div class="recipient"><b>Charlie</b><small>Session C-01</small></div></div><div class="result">Recovered copy → verify its recorded session</div></div>
+    </div>
+  </section>
+  <section>
+    <div class="label">02 / Our solution</div><h2>Record the evidence before releasing the copy.</h2>
+    <div class="steps">
+      <div class="step"><div class="number">01</div><h3>Encrypt once</h3><p>Protect the document with AES-256-GCM. Give each authorized recipient a separate post-quantum key envelope.</p></div>
+      <div class="step"><div class="number">02</div><h3>Decrypt &amp; fingerprint</h3><p>A separate managed appliance retains content keys and unmarked originals. Contour marking works experimentally but fails readable shape replacement; a release carrier remains unvalidated.</p></div>
+      <div class="step"><div class="number">03</div><h3>Recipient signs</h3><p>Recipient-owned keys sign access and exact release approval. The appliance separately signs a processing receipt.</p></div>
+      <div class="step"><div class="number">04</div><h3>Ledger confirms</h3><p>Verify actual consensus certificates and durable ACKs. The recorded prototype uses four separate Go engines over native PQ TCP, with four ACKs per session and claim. Independent administration remains a deployment requirement.</p></div>
+      <div class="step"><div class="number">05</div><h3>Release exact bytes</h3><p>Consensus orders a fresh transfer claim against cancellation and revocation. An earlier accepted claim grants one bounded live connection; reconnect needs a new claim.</p></div>
+      <div class="step"><div class="number">06</div><h3>Verify a recovered copy</h3><p>Verify native signatures and real ledger proofs for exact bytes or complete rendering equality. Changed or unsupported content stays inconclusive.</p></div>
+    </div>
+  </section>
+  <section>
+    <div class="label">03 / Implementation</div>
+    <div class="tech">
+      <div class="panel"><h2>Selected protocol &amp; carrier blocker</h2><dl><dt>Contour prototype — experimental only</dt><dd>Seven profiles pass ordinary cleanup. Three independent holdouts fail public-font canonicalization. One synthetic ASCII page, pinned Noto fonts and supplied source geometry; no validated invisible amplitude.</dd><dt>Cryptography</dt><dd>OpenSSL 3.5.9 LTS · ML-KEM-768 · ML-DSA-65 · AES-256-GCM</dd><dt>Audit &amp; recovery</dt><dd>SmartBFT 1.0.2 · four networked engine processes · native pure-PQ TLS · opaque PFX signers and encrypted source/prepared/journal stores compose in the test-only prototype</dd></dl></div>
+      <div class="panel"><h2>What the evidence means</h2><p>Signed output and independently verified ledger proofs authenticate a prepared session. Complete pixel equality also supports metadata/resource rewrites. Header transplants and critical-digit edits refuse even when a payload survives.</p><div class="result">Association with an issued session does not establish the human leaker. Trusted issuers or appliances can also leak that copy.</div></div>
+    </div>
+  </section>
+  <section>
+    <div class="label">04 / Current status</div>
+    <div class="proof"><div class="panel"><span class="status pending">Readable removal reproduced</span><p>Contours survive the previous tonal and position removers, but public-font glyph replacement defeats them. All 150 number strings remain correct in each attacked holdout. No validated carrier or perception study.</p></div><div class="panel"><span class="status pending">Working prototype verified</span><p>The recorded full baseline passes: 74 protocol checks, 27 independent Go vectors, 12 pure-PQ TCP checks, 73 ledger tests/subtests, 3 direct integrations, 20 PDF verifier checks and 17 actual-chain checks. The working prototype adds 15 integration tests and Go race/vet checks. The visual UI has 13 browser checks. Cohorts overlap; they are not a combined security score.</p></div></div>
+  </section>
+  <section class="scope"><strong>Current boundary: experimental digital PDFs · separate managed appliance · air-gapped LAN</strong><p>Recipient owns signing keys; the appliance retains KEM keys. This custody/raster baseline is conditional, not sponsor-approved. One-page ASCII raster tests do not establish native/multilingual support, human invisibility, parser isolation or independent deployment. Native engine and recipient TLS are integrated in the recorded prototype. Protected persistent unlock, restart/status reconciliation, trusted consent UI, hostile parser isolation and installed deployment remain open. Attributed production release stays blocked; photos/scans remain deferred.</p></section>
+  <footer><span>Working prototype and bounded validation · 5 October 2026 · Self-contained offline explainer</span><a href="https://sih.gov.in/sih2026PS">Official SIH problem statement</a></footer>
+</main>
+</body>
+</html>
